@@ -6,7 +6,8 @@
     cd calepin-new
     
     # assuming ~/bin/ exists and is in your $PATH
-    ln -s ./calepin ~/bin/calepin
+    # (otherwise, try /usr/bin/calepin)
+    ln -s calepin ~/bin/calepin
 
 ### Usage
 
