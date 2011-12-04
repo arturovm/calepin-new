@@ -2,7 +2,7 @@
 
 ### Installation
 
-    git clone https://github.com/cormacrelf/calepin-new
+    git clone https://cormacrelf@github.com/cormacrelf/calepin-new.git
     cd calepin-new
     
     # assuming ~/bin/ exists and is in your $PATH
