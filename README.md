@@ -7,7 +7,7 @@
     
     # assuming ~/bin/ exists and is in your $PATH
     # (otherwise, try /usr/bin/calepin)
-    ln -s calepin ~/bin/calepin
+    ln -s $(pwd)/calepin ~/bin/calepin
 
 ### Usage
 

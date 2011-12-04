@@ -1,12 +1,13 @@
 #!/bin/sh
-# shell function for calepin
+# shell function for CP
 
-cpdir="$HOME/Dropbox/Apps/Calepin"
-name=$1
-file=$cpdir/$name.md
-touch $file
+if [[ $CALEPIN_DIR == "" ]]; then
+    CALEPIN_DIR="$HOME/Dropbox/Apps/Calepin"
+fi
+CP_FILE=$CALEPIN_DIR/$1.md
+touch $CP_FILE
 if [[ $CALEPIN_EDITOR > "" ]]; then
-	type -P $CALEPIN_EDITOR &>/dev/null && $CALEPIN_EDITOR $file || open -a $CALEPIN_EDITOR $file
+	type -P $CALEPIN_EDITOR &>/dev/null && $CALEPIN_EDITOR $CP_FILE || open -a $CALEPIN_EDITOR $CP_FILE
 else
-  open -e $file
+  open -e $CP_FILE
 fi
