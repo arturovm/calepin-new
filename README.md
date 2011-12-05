@@ -11,9 +11,11 @@
 
 ### Usage
 
-To create a file named "file-name" in your ~/Dropbox/Apps/Calepin/ folder:
+To create a file named "file-name.md" in your ~/Dropbox/Apps/Calepin/ folder:
 
     % calepin file-name
+    
+    # note that you don't need the ".md" extension
 
 
 ### Configuration
