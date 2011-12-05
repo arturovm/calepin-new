@@ -1,5 +1,7 @@
 # [Calepin](http://calepin.co) new file creator
 
+Removes most friction in the process of starting to write a new blog entry. Don't think, just write. 
+
 ### Installation
 
     git clone https://cormacrelf@github.com/cormacrelf/calepin-new.git
