@@ -7,13 +7,14 @@
     
     # assuming ~/bin/ exists and is in your $PATH
     # (otherwise, try /usr/bin/calepin)
+    
     ln -s $(pwd)/calepin ~/bin/calepin
 
 ### Usage
 
 To create a file named "file-name.md" in your ~/Dropbox/Apps/Calepin/ folder:
 
-    % calepin file-name
+    calepin file-name
     
     # note that you don't need the ".md" extension
 
@@ -36,6 +37,7 @@ To change the text editor used by the `calepin` command, add the following line 
 To change the directory used as the Calepin folder (eg. your Dropbox root folder is somewhere other than ~/Dropbox):
 
     # again in ~/.bash_profile (etc.)
+    
     export CALEPIN_DIR="/path/to/Dropbox"
 
 ##### This is a [@cormacrelf](http://twitter.com/cormacrelf) jam.
