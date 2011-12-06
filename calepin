@@ -8,7 +8,6 @@ CP_FILE=$CALEPIN_DIR/$1.md
 touch $CP_FILE
 if [[ $CALEPIN_EDITOR > "" ]]; then
 		first=`echo $CALEPIN_EDITOR | cut -d" " -f1`
-		echo $first
 	type -P $first &>/dev/null && $CALEPIN_EDITOR $CP_FILE || open -a "$CALEPIN_EDITOR" $CP_FILE
 else
   open -e $CP_FILE
