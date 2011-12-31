@@ -29,7 +29,7 @@ For example:
     # -d insert date (flag only)
     # -h show help message
     
-    calepin -f post123.md -t "Hello World!" -d
+    calepin -f post123 -t "Hello World!" -d
     
     # This creates a file named 'post123.md', with the title
     # 'Hello World!' and inserts the current date, all according
