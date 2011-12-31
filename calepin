@@ -1,11 +1,78 @@
 #!/bin/sh
 # shell function for CP
 
+usage()
+{
+cat <<EOF
+	usage: $0 options
+	
+This script creates a new file in your calepin directory, with the option to pass a title and enabling the date in your post.
+	
+	OPTIONS:
+		-h	Shows this message
+		-f	Filename (required)
+		-t	Sets a title
+		-d	Appends the date
+EOF
+}
+
+TITLE=
+DATE=
+FILENAME=
+
+while getopts ":hf:t:d" OPTION
+do
+	case $OPTION in
+		h)
+			usage
+			exit 1
+			;;
+		f)
+			FILENAME=$OPTARG
+			;;
+		t)
+			TITLE=$OPTARG
+			;;
+		d)
+			DATE=1
+			;;
+		?)
+			usage
+			exit
+			;;
+	esac
+done
+
+if [[ -z $FILENAME ]]; then
+	echo
+	echo "	**********"
+	echo "	Error: File name is required, see usage."
+	echo "	**********"
+	echo
+	usage
+	exit 1
+fi
+
 if [[ $CALEPIN_DIR == "" ]]; then
     CALEPIN_DIR="$HOME/Dropbox/Apps/Calepin"
 fi
-CP_FILE=$CALEPIN_DIR/$1.md
+
+CP_FILE=$CALEPIN_DIR/$FILENAME.md
 touch $CP_FILE
+
+if [[ $DATE == 1 && $TITLE > "" ]]; then
+	echo "Date: $(date +%F)\nTitle: $TITLE" > $CALEPIN_DIR/$FILENAME.md
+else
+	if [[ $DATE == 1 ]]; then
+		echo "Date: $(date +%F)" > $CALEPIN_DIR/$FILENAME.md
+	fi
+	if [[ $TITLE > "" ]]; then
+		echo "Title: $TITLE" > $CALEPIN_DIR/$FILENAME.md
+	fi
+fi
+
+echo $METADATA
+
 if [[ $CALEPIN_EDITOR > "" ]]; then
 		first=`echo $CALEPIN_EDITOR | cut -d" " -f1`
 	type -P $first &>/dev/null && $CALEPIN_EDITOR $CP_FILE || open -a "$CALEPIN_EDITOR" $CP_FILE
