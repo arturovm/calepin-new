@@ -16,9 +16,24 @@ Removes most friction in the process of starting to write a new blog entry. Don'
 
 To create a file named "file-name.md" in your ~/Dropbox/Apps/Calepin/ folder:
 
-    calepin file-name
+    calepin -f file-name
     
     # note that you don't need the ".md" extension
+
+A few other useful optional arguments are available. You can set a title for the post and insert the current date, should you chose to do so.
+
+For example:
+
+    # available arguments are:
+    # -t title
+    # -d insert date (flag only)
+    # -h show help message
+    
+    calepin -f post123.md -t "Hello World!" -d
+    
+    # This creates a file named 'post123.md', with the title
+    # 'Hello World!' and inserts the current date, all according
+    # to the calepin formatting guide.
 
 
 ### Configuration
@@ -43,3 +58,4 @@ To change the directory used as the Calepin folder (eg. your Dropbox root folder
     export CALEPIN_DIR="/path/to/Dropbox"
 
 ##### This is a [@cormacrelf](http://twitter.com/cormacrelf) jam.
+##### Additions by [@ArturoVM](http://twitter.com/ArturoVM).
