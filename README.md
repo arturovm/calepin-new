@@ -7,9 +7,9 @@ Removes most friction in the process of starting to write a new blog entry. Don'
     git clone https://cormacrelf@github.com/cormacrelf/calepin-new.git
     cd calepin-new
     
-    # assuming ~/bin/ exists and is in your $PATH
+	# assuming ~/bin/ exists and is in your $PATH
     # (otherwise, try /usr/bin/calepin)
-    
+
     ln -s $(pwd)/calepin ~/bin/calepin
 
 ### Usage
@@ -28,12 +28,14 @@ For example:
     # -t title
     # -d insert date (flag only)
     # -h show help message
-    
-    calepin -f post123 -t "Hello World!" -d
+    # -p prevent post from being published (draft)
+
+    calepin -f post123 -t "Hello World!" -d -p
     
     # This creates a file named 'post123.md', with the title
-    # 'Hello World!' and inserts the current date, all according
-    # to the calepin formatting guide.
+    # 'Hello World!', inserts the current date, and marks
+	# the file as a draft, all according to the calepin
+	# formatting guide.
 
 
 ### Configuration
@@ -50,6 +52,10 @@ To change the text editor used by the `calepin` command, add the following line 
     # an Application called "vim"). EG:
     
     export CALEPIN_EDITOR="vim"
+
+	# You can even add flags and arguments to a command
+
+	export CALEPIN_EDITOR="vim -y +"
 
 To change the directory used as the Calepin folder (eg. your Dropbox root folder is somewhere other than ~/Dropbox):
 

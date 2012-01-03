@@ -13,14 +13,16 @@ This script creates a new file in your calepin directory, with the option to pas
 		-f	Filename (required)
 		-t	Sets a title
 		-d	Appends the date
+		-p	Prevents post from being published (draft)
 EOF
 }
 
 TITLE=
 DATE=
 FILENAME=
+DRAFT=
 
-while getopts ":hf:t:d" OPTION
+while getopts ":hf:t:dp" OPTION
 do
 	case $OPTION in
 		h)
@@ -35,6 +37,9 @@ do
 			;;
 		d)
 			DATE=1
+			;;
+		p)
+			DRAFT=1
 			;;
 		?)
 			usage
@@ -60,18 +65,17 @@ fi
 CP_FILE=$CALEPIN_DIR/$FILENAME.md
 touch $CP_FILE
 
-if [[ $DATE == 1 && $TITLE > "" ]]; then
-	echo "Date: $(date +%F)\nTitle: $TITLE" > $CALEPIN_DIR/$FILENAME.md
-else
-	if [[ $DATE == 1 ]]; then
-		echo "Date: $(date +%F)" > $CALEPIN_DIR/$FILENAME.md
-	fi
-	if [[ $TITLE > "" ]]; then
-		echo "Title: $TITLE" > $CALEPIN_DIR/$FILENAME.md
-	fi
+if [[ $DATE == 1 ]]; then
+	echo "Date: $(date +%F)" >> $CALEPIN_DIR/$FILENAME.md
+fi
+if [[ $TITLE > "" ]]; then
+	echo "Title: $TITLE" >> $CALEPIN_DIR/$FILENAME.md
+fi
+if [[ $DRAFT == 1 ]]; then
+	echo "Status: draft" >> $CALEPIN_DIR/$FILENAME.md
 fi
 
-echo $METADATA
+cat $CALEPIN_DIR/$FILENAME.md # prints all relevant metadata
 
 if [[ $CALEPIN_EDITOR > "" ]]; then
 		first=`echo $CALEPIN_EDITOR | cut -d" " -f1`
